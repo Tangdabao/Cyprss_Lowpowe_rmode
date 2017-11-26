@@ -1,0 +1,6 @@
+Cypress Lowpower
+/////////////////////////
+////////////////////////
+Sleep：2.69mA
+DEEPSLEEP：1.0uA/0.3uA
+Hibernate:90nA
