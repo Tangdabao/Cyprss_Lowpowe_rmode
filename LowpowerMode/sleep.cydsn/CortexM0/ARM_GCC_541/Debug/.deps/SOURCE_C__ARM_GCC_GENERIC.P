@@ -1,0 +1,52 @@
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/CortexM0/ARM_GCC_541/Debug/isr_Sw.o : C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/CyLFClk.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/LED_Status.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/LED_Status_aliases.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/SW.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/SW_aliases.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/isr_Sw.c C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/isr_Sw.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/cyapicallbacks.h 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/CyLFClk.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/CyLib.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/LED_Status.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/LED_Status_aliases.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/SW.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/SW_aliases.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cydevice_trm.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cyfitter.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cypins.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cytypes.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/isr_Sw.c : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/isr_Sw.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/cyapicallbacks.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/CortexM0/ARM_GCC_541/Debug/main.o : C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/CyFlash.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cmsis_armcc.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cmsis_compiler.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cmsis_gcc.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/core_cm0.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/core_cm0_psoc4.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cyPm.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cydisabledsheets.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/project.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/CyLFClk.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/CyLib.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/LED_Status.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/LED_Status_aliases.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/SW.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/SW_aliases.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cydevice_trm.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cyfitter.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cypins.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cytypes.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/isr_Sw.h C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/main.c 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/CyFlash.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cmsis_armcc.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cmsis_compiler.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cmsis_gcc.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/core_cm0.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/core_cm0_psoc4.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cyPm.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cydisabledsheets.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/cyfitter_cfg.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/Generated_Source/PSoC4/project.h : 
+
+C:/Users/Administrator/Desktop/Temporary\ Files/Cypress_Lowpower/Lowpower/LowpowerMode/sleep.cydsn/main.c : 
+

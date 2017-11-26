@@ -1,0 +1,668 @@
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	2
+  21              		.global	main
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	main, %function
+  25              	main:
+  26              	.LFB35:
+  27              		.file 1 "main.c"
+   1:main.c        **** /* ========================================
+   2:main.c        ****  *
+   3:main.c        ****  * Copyright YOUR COMPANY, THE YEAR
+   4:main.c        ****  * All Rights Reserved
+   5:main.c        ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:main.c        ****  *
+   7:main.c        ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:main.c        ****  * WHICH IS THE PROPERTY OF your company.
+   9:main.c        ****  *
+  10:main.c        ****  * ========================================
+  11:main.c        **** */
+  12:main.c        **** 
+  13:main.c        **** //********LSD*******************///
+  14:main.c        **** //低功耗之Sleep模式测试工程//
+  15:main.c        **** //        说明：
+  16:main.c        **** //降低功耗可能遇到的问题：
+  17:main.c        **** //1.漏电流的产生。
+  18:main.c        **** //2.降低频率
+  19:main.c        **** //3.修改System的DEBUG模式的SWD为GPIO
+  20:main.c        **** //4.进入此模式之后，再次唤醒在睡眠模式之后开始执行
+  21:main.c        **** 
+  22:main.c        **** #include "project.h"
+  23:main.c        **** 
+  24:main.c        **** #define OFF 1u
+  25:main.c        **** #define ON  0u
+  26:main.c        **** 
+  27:main.c        **** int main(void)
+  28:main.c        **** {
+  28              		.loc 1 28 0
+  29              		.cfi_startproc
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 2
+
+
+  30              		@ Volatile: function does not return.
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  29:main.c        **** 	//uint32 status;
+  30:main.c        **** 	
+  31:main.c        **** 	LED_Status_Write(OFF);
+  37              		.loc 1 31 0
+  38 0002 0120     		movs	r0, #1
+  39 0004 FFF7FEFF 		bl	LED_Status_Write
+  40              	.LVL0:
+  32:main.c        **** 	CyDelay(200);
+  41              		.loc 1 32 0
+  42 0008 C820     		movs	r0, #200
+  43 000a FFF7FEFF 		bl	CyDelay
+  44              	.LVL1:
+  33:main.c        ****     LED_Status_Write(ON);
+  45              		.loc 1 33 0
+  46 000e 0020     		movs	r0, #0
+  47 0010 FFF7FEFF 		bl	LED_Status_Write
+  48              	.LVL2:
+  34:main.c        **** 	CyDelay(200);
+  49              		.loc 1 34 0
+  50 0014 C820     		movs	r0, #200
+  51 0016 FFF7FEFF 		bl	CyDelay
+  52              	.LVL3:
+  35:main.c        **** 	LED_Status_Write(OFF);
+  53              		.loc 1 35 0
+  54 001a 0120     		movs	r0, #1
+  55 001c FFF7FEFF 		bl	LED_Status_Write
+  56              	.LVL4:
+  36:main.c        **** 	//反馈出从哪个模式唤醒；
+  37:main.c        **** 	//status=CySysPmGetResetReason();
+  38:main.c        **** 	
+  39:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
+  57              		.loc 1 39 0
+  58              		.syntax divided
+  59              	@ 39 "main.c" 1
+  60 0020 62B6     		CPSIE   i
+  61              	@ 0 "" 2
+  40:main.c        **** 	
+  41:main.c        **** 	isr_Sw_Start();
+  62              		.loc 1 41 0
+  63              		.thumb
+  64              		.syntax unified
+  65 0022 FFF7FEFF 		bl	isr_Sw_Start
+  66              	.LVL5:
+  67              	.L2:
+  42:main.c        **** 	
+  43:main.c        **** 	#if 0
+  44:main.c        **** 	CySysClkImoStop();
+  45:main.c        ****     #endif
+  46:main.c        **** 	
+  47:main.c        **** 	//设置高阻态模式///
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 3
+
+
+  48:main.c        **** 	#if 0
+  49:main.c        **** 	CY_SET_REG32((void *)(CYREG_GPIO_PRT2_PC), 0x00012492u);
+  50:main.c        **** 	//#else
+  51:main.c        **** 	//模拟高阻态
+  52:main.c        **** 	CY_SET_REG32((void *)(CYREG_GPIO_PRT0_PC), 0x03000000u);
+  53:main.c        **** 	CY_SET_REG32((void *)(CYREG_GPIO_PRT1_PC), 0x03000000u);
+  54:main.c        **** 	CY_SET_REG32((void *)(CYREG_GPIO_PRT2_PC), 0x03000000u);
+  55:main.c        **** 	CY_SET_REG32((void *)(CYREG_GPIO_PRT3_PC), 0x03000000u);
+  56:main.c        **** 	CY_SET_REG32((void *)(CYREG_GPIO_PRT4_PC), 0x03000000u);
+  57:main.c        **** 	CY_SET_REG32((void *)(CYREG_GPIO_PRT5_PC), 0x03000000u);
+  58:main.c        **** 	
+  59:main.c        **** 	//CySysPmSleep();
+  60:main.c        **** 	
+  61:main.c        **** 	CyDelay(200);
+  62:main.c        **** 	CyDelay(200);
+  63:main.c        **** 	CyDelay(200);
+  64:main.c        **** 	CyDelay(200);
+  65:main.c        **** 	
+  66:main.c        **** 	CySysClkEcoStop();
+  67:main.c        **** 
+  68:main.c        **** 	//此处 开关用来测试，当睡眠模式唤醒之后在什么位置再次执行
+  69:main.c        ****      SW_Sleep();
+  70:main.c        **** 	 LED_Status_Sleep();
+  71:main.c        **** 	 CySysPmSleep();
+  72:main.c        ****      
+  73:main.c        **** 	 CyDelay(200);
+  74:main.c        ****      CyDelay(200);
+  75:main.c        ****      CyDelay(200);
+  76:main.c        **** 	 CyDelay(200);
+  77:main.c        **** 	 LED_Status_Write(ON);
+  78:main.c        ****      CyDelay(200);
+  79:main.c        ****      LED_Status_Write(OFF);
+  80:main.c        **** 	 CyDelay(200);
+  81:main.c        **** 	 LED_Status_Write(ON);
+  82:main.c        ****      CyDelay(200);
+  83:main.c        ****      LED_Status_Write(OFF);
+  84:main.c        **** 	 CyDelay(200);
+  85:main.c        **** 	 LED_Status_Write(ON);
+  86:main.c        ****      CyDelay(200);
+  87:main.c        ****      LED_Status_Write(OFF);
+  88:main.c        **** 	 CyDelay(200);
+  89:main.c        **** 		
+  90:main.c        **** 	#endif
+  91:main.c        ****     for(;;)
+  92:main.c        ****     {
+  93:main.c        **** 	     SW_Sleep();
+  68              		.loc 1 93 0 discriminator 1
+  69 0026 FFF7FEFF 		bl	SW_Sleep
+  70              	.LVL6:
+  94:main.c        **** 		 LED_Status_Sleep();
+  71              		.loc 1 94 0 discriminator 1
+  72 002a FFF7FEFF 		bl	LED_Status_Sleep
+  73              	.LVL7:
+  95:main.c        **** 		 CySysPmSleep();
+  74              		.loc 1 95 0 discriminator 1
+  75 002e FFF7FEFF 		bl	CySysPmSleep
+  76              	.LVL8:
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 4
+
+
+  77 0032 F8E7     		b	.L2
+  78              		.cfi_endproc
+  79              	.LFE35:
+  80              		.size	main, .-main
+  81              		.text
+  82              	.Letext0:
+  83              		.file 2 "Generated_Source\\PSoC4/LED_Status.h"
+  84              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
+  85              		.file 4 "Generated_Source\\PSoC4/isr_Sw.h"
+  86              		.file 5 "Generated_Source\\PSoC4/SW.h"
+  87              		.file 6 "Generated_Source\\PSoC4/cyPm.h"
+  88              		.section	.debug_info,"",%progbits
+  89              	.Ldebug_info0:
+  90 0000 6C010000 		.4byte	0x16c
+  91 0004 0400     		.2byte	0x4
+  92 0006 00000000 		.4byte	.Ldebug_abbrev0
+  93 000a 04       		.byte	0x4
+  94 000b 01       		.uleb128 0x1
+  95 000c 1B010000 		.4byte	.LASF20
+  96 0010 0C       		.byte	0xc
+  97 0011 7D000000 		.4byte	.LASF21
+  98 0015 0E000000 		.4byte	.LASF22
+  99 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 100 001d 00000000 		.4byte	0
+ 101 0021 00000000 		.4byte	.Ldebug_line0
+ 102 0025 02       		.uleb128 0x2
+ 103 0026 01       		.byte	0x1
+ 104 0027 06       		.byte	0x6
+ 105 0028 BC010000 		.4byte	.LASF0
+ 106 002c 02       		.uleb128 0x2
+ 107 002d 01       		.byte	0x1
+ 108 002e 08       		.byte	0x8
+ 109 002f C9000000 		.4byte	.LASF1
+ 110 0033 02       		.uleb128 0x2
+ 111 0034 02       		.byte	0x2
+ 112 0035 05       		.byte	0x5
+ 113 0036 E1010000 		.4byte	.LASF2
+ 114 003a 02       		.uleb128 0x2
+ 115 003b 02       		.byte	0x2
+ 116 003c 07       		.byte	0x7
+ 117 003d A9010000 		.4byte	.LASF3
+ 118 0041 02       		.uleb128 0x2
+ 119 0042 04       		.byte	0x4
+ 120 0043 05       		.byte	0x5
+ 121 0044 ED000000 		.4byte	.LASF4
+ 122 0048 02       		.uleb128 0x2
+ 123 0049 04       		.byte	0x4
+ 124 004a 07       		.byte	0x7
+ 125 004b 9A000000 		.4byte	.LASF5
+ 126 004f 02       		.uleb128 0x2
+ 127 0050 08       		.byte	0x8
+ 128 0051 05       		.byte	0x5
+ 129 0052 00000000 		.4byte	.LASF6
+ 130 0056 02       		.uleb128 0x2
+ 131 0057 08       		.byte	0x8
+ 132 0058 07       		.byte	0x7
+ 133 0059 AC000000 		.4byte	.LASF7
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 5
+
+
+ 134 005d 03       		.uleb128 0x3
+ 135 005e 04       		.byte	0x4
+ 136 005f 05       		.byte	0x5
+ 137 0060 696E7400 		.ascii	"int\000"
+ 138 0064 02       		.uleb128 0x2
+ 139 0065 04       		.byte	0x4
+ 140 0066 07       		.byte	0x7
+ 141 0067 70000000 		.4byte	.LASF8
+ 142 006b 02       		.uleb128 0x2
+ 143 006c 04       		.byte	0x4
+ 144 006d 04       		.byte	0x4
+ 145 006e C3000000 		.4byte	.LASF9
+ 146 0072 02       		.uleb128 0x2
+ 147 0073 08       		.byte	0x8
+ 148 0074 04       		.byte	0x4
+ 149 0075 07010000 		.4byte	.LASF10
+ 150 0079 02       		.uleb128 0x2
+ 151 007a 01       		.byte	0x1
+ 152 007b 08       		.byte	0x8
+ 153 007c D7000000 		.4byte	.LASF11
+ 154 0080 02       		.uleb128 0x2
+ 155 0081 04       		.byte	0x4
+ 156 0082 07       		.byte	0x7
+ 157 0083 EB010000 		.4byte	.LASF12
+ 158 0087 02       		.uleb128 0x2
+ 159 0088 08       		.byte	0x8
+ 160 0089 04       		.byte	0x4
+ 161 008a D5010000 		.4byte	.LASF13
+ 162 008e 04       		.uleb128 0x4
+ 163 008f 84000000 		.4byte	.LASF23
+ 164 0093 01       		.byte	0x1
+ 165 0094 1B       		.byte	0x1b
+ 166 0095 5D000000 		.4byte	0x5d
+ 167 0099 00000000 		.4byte	.LFB35
+ 168 009d 34000000 		.4byte	.LFE35-.LFB35
+ 169 00a1 01       		.uleb128 0x1
+ 170 00a2 9C       		.byte	0x9c
+ 171 00a3 2D010000 		.4byte	0x12d
+ 172 00a7 05       		.uleb128 0x5
+ 173 00a8 08000000 		.4byte	.LVL0
+ 174 00ac 2D010000 		.4byte	0x12d
+ 175 00b0 BA000000 		.4byte	0xba
+ 176 00b4 06       		.uleb128 0x6
+ 177 00b5 01       		.uleb128 0x1
+ 178 00b6 50       		.byte	0x50
+ 179 00b7 01       		.uleb128 0x1
+ 180 00b8 31       		.byte	0x31
+ 181 00b9 00       		.byte	0
+ 182 00ba 05       		.uleb128 0x5
+ 183 00bb 0E000000 		.4byte	.LVL1
+ 184 00bf 38010000 		.4byte	0x138
+ 185 00c3 CE000000 		.4byte	0xce
+ 186 00c7 06       		.uleb128 0x6
+ 187 00c8 01       		.uleb128 0x1
+ 188 00c9 50       		.byte	0x50
+ 189 00ca 02       		.uleb128 0x2
+ 190 00cb 08       		.byte	0x8
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 6
+
+
+ 191 00cc C8       		.byte	0xc8
+ 192 00cd 00       		.byte	0
+ 193 00ce 05       		.uleb128 0x5
+ 194 00cf 14000000 		.4byte	.LVL2
+ 195 00d3 2D010000 		.4byte	0x12d
+ 196 00d7 E1000000 		.4byte	0xe1
+ 197 00db 06       		.uleb128 0x6
+ 198 00dc 01       		.uleb128 0x1
+ 199 00dd 50       		.byte	0x50
+ 200 00de 01       		.uleb128 0x1
+ 201 00df 30       		.byte	0x30
+ 202 00e0 00       		.byte	0
+ 203 00e1 05       		.uleb128 0x5
+ 204 00e2 1A000000 		.4byte	.LVL3
+ 205 00e6 38010000 		.4byte	0x138
+ 206 00ea F5000000 		.4byte	0xf5
+ 207 00ee 06       		.uleb128 0x6
+ 208 00ef 01       		.uleb128 0x1
+ 209 00f0 50       		.byte	0x50
+ 210 00f1 02       		.uleb128 0x2
+ 211 00f2 08       		.byte	0x8
+ 212 00f3 C8       		.byte	0xc8
+ 213 00f4 00       		.byte	0
+ 214 00f5 05       		.uleb128 0x5
+ 215 00f6 20000000 		.4byte	.LVL4
+ 216 00fa 2D010000 		.4byte	0x12d
+ 217 00fe 08010000 		.4byte	0x108
+ 218 0102 06       		.uleb128 0x6
+ 219 0103 01       		.uleb128 0x1
+ 220 0104 50       		.byte	0x50
+ 221 0105 01       		.uleb128 0x1
+ 222 0106 31       		.byte	0x31
+ 223 0107 00       		.byte	0
+ 224 0108 07       		.uleb128 0x7
+ 225 0109 26000000 		.4byte	.LVL5
+ 226 010d 43010000 		.4byte	0x143
+ 227 0111 07       		.uleb128 0x7
+ 228 0112 2A000000 		.4byte	.LVL6
+ 229 0116 4E010000 		.4byte	0x14e
+ 230 011a 07       		.uleb128 0x7
+ 231 011b 2E000000 		.4byte	.LVL7
+ 232 011f 59010000 		.4byte	0x159
+ 233 0123 07       		.uleb128 0x7
+ 234 0124 32000000 		.4byte	.LVL8
+ 235 0128 64010000 		.4byte	0x164
+ 236 012c 00       		.byte	0
+ 237 012d 08       		.uleb128 0x8
+ 238 012e DC000000 		.4byte	.LASF14
+ 239 0132 DC000000 		.4byte	.LASF14
+ 240 0136 02       		.byte	0x2
+ 241 0137 33       		.byte	0x33
+ 242 0138 08       		.uleb128 0x8
+ 243 0139 92000000 		.4byte	.LASF15
+ 244 013d 92000000 		.4byte	.LASF15
+ 245 0141 03       		.byte	0x3
+ 246 0142 D9       		.byte	0xd9
+ 247 0143 08       		.uleb128 0x8
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 7
+
+
+ 248 0144 0E010000 		.4byte	.LASF16
+ 249 0148 0E010000 		.4byte	.LASF16
+ 250 014c 04       		.byte	0x4
+ 251 014d 17       		.byte	0x17
+ 252 014e 08       		.uleb128 0x8
+ 253 014f 89000000 		.4byte	.LASF17
+ 254 0153 89000000 		.4byte	.LASF17
+ 255 0157 05       		.byte	0x5
+ 256 0158 40       		.byte	0x40
+ 257 0159 08       		.uleb128 0x8
+ 258 015a F6000000 		.4byte	.LASF18
+ 259 015e F6000000 		.4byte	.LASF18
+ 260 0162 02       		.byte	0x2
+ 261 0163 40       		.byte	0x40
+ 262 0164 08       		.uleb128 0x8
+ 263 0165 C8010000 		.4byte	.LASF19
+ 264 0169 C8010000 		.4byte	.LASF19
+ 265 016d 06       		.byte	0x6
+ 266 016e 56       		.byte	0x56
+ 267 016f 00       		.byte	0
+ 268              		.section	.debug_abbrev,"",%progbits
+ 269              	.Ldebug_abbrev0:
+ 270 0000 01       		.uleb128 0x1
+ 271 0001 11       		.uleb128 0x11
+ 272 0002 01       		.byte	0x1
+ 273 0003 25       		.uleb128 0x25
+ 274 0004 0E       		.uleb128 0xe
+ 275 0005 13       		.uleb128 0x13
+ 276 0006 0B       		.uleb128 0xb
+ 277 0007 03       		.uleb128 0x3
+ 278 0008 0E       		.uleb128 0xe
+ 279 0009 1B       		.uleb128 0x1b
+ 280 000a 0E       		.uleb128 0xe
+ 281 000b 55       		.uleb128 0x55
+ 282 000c 17       		.uleb128 0x17
+ 283 000d 11       		.uleb128 0x11
+ 284 000e 01       		.uleb128 0x1
+ 285 000f 10       		.uleb128 0x10
+ 286 0010 17       		.uleb128 0x17
+ 287 0011 00       		.byte	0
+ 288 0012 00       		.byte	0
+ 289 0013 02       		.uleb128 0x2
+ 290 0014 24       		.uleb128 0x24
+ 291 0015 00       		.byte	0
+ 292 0016 0B       		.uleb128 0xb
+ 293 0017 0B       		.uleb128 0xb
+ 294 0018 3E       		.uleb128 0x3e
+ 295 0019 0B       		.uleb128 0xb
+ 296 001a 03       		.uleb128 0x3
+ 297 001b 0E       		.uleb128 0xe
+ 298 001c 00       		.byte	0
+ 299 001d 00       		.byte	0
+ 300 001e 03       		.uleb128 0x3
+ 301 001f 24       		.uleb128 0x24
+ 302 0020 00       		.byte	0
+ 303 0021 0B       		.uleb128 0xb
+ 304 0022 0B       		.uleb128 0xb
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 8
+
+
+ 305 0023 3E       		.uleb128 0x3e
+ 306 0024 0B       		.uleb128 0xb
+ 307 0025 03       		.uleb128 0x3
+ 308 0026 08       		.uleb128 0x8
+ 309 0027 00       		.byte	0
+ 310 0028 00       		.byte	0
+ 311 0029 04       		.uleb128 0x4
+ 312 002a 2E       		.uleb128 0x2e
+ 313 002b 01       		.byte	0x1
+ 314 002c 3F       		.uleb128 0x3f
+ 315 002d 19       		.uleb128 0x19
+ 316 002e 03       		.uleb128 0x3
+ 317 002f 0E       		.uleb128 0xe
+ 318 0030 3A       		.uleb128 0x3a
+ 319 0031 0B       		.uleb128 0xb
+ 320 0032 3B       		.uleb128 0x3b
+ 321 0033 0B       		.uleb128 0xb
+ 322 0034 27       		.uleb128 0x27
+ 323 0035 19       		.uleb128 0x19
+ 324 0036 49       		.uleb128 0x49
+ 325 0037 13       		.uleb128 0x13
+ 326 0038 8701     		.uleb128 0x87
+ 327 003a 19       		.uleb128 0x19
+ 328 003b 11       		.uleb128 0x11
+ 329 003c 01       		.uleb128 0x1
+ 330 003d 12       		.uleb128 0x12
+ 331 003e 06       		.uleb128 0x6
+ 332 003f 40       		.uleb128 0x40
+ 333 0040 18       		.uleb128 0x18
+ 334 0041 9742     		.uleb128 0x2117
+ 335 0043 19       		.uleb128 0x19
+ 336 0044 01       		.uleb128 0x1
+ 337 0045 13       		.uleb128 0x13
+ 338 0046 00       		.byte	0
+ 339 0047 00       		.byte	0
+ 340 0048 05       		.uleb128 0x5
+ 341 0049 898201   		.uleb128 0x4109
+ 342 004c 01       		.byte	0x1
+ 343 004d 11       		.uleb128 0x11
+ 344 004e 01       		.uleb128 0x1
+ 345 004f 31       		.uleb128 0x31
+ 346 0050 13       		.uleb128 0x13
+ 347 0051 01       		.uleb128 0x1
+ 348 0052 13       		.uleb128 0x13
+ 349 0053 00       		.byte	0
+ 350 0054 00       		.byte	0
+ 351 0055 06       		.uleb128 0x6
+ 352 0056 8A8201   		.uleb128 0x410a
+ 353 0059 00       		.byte	0
+ 354 005a 02       		.uleb128 0x2
+ 355 005b 18       		.uleb128 0x18
+ 356 005c 9142     		.uleb128 0x2111
+ 357 005e 18       		.uleb128 0x18
+ 358 005f 00       		.byte	0
+ 359 0060 00       		.byte	0
+ 360 0061 07       		.uleb128 0x7
+ 361 0062 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 9
+
+
+ 362 0065 00       		.byte	0
+ 363 0066 11       		.uleb128 0x11
+ 364 0067 01       		.uleb128 0x1
+ 365 0068 31       		.uleb128 0x31
+ 366 0069 13       		.uleb128 0x13
+ 367 006a 00       		.byte	0
+ 368 006b 00       		.byte	0
+ 369 006c 08       		.uleb128 0x8
+ 370 006d 2E       		.uleb128 0x2e
+ 371 006e 00       		.byte	0
+ 372 006f 3F       		.uleb128 0x3f
+ 373 0070 19       		.uleb128 0x19
+ 374 0071 3C       		.uleb128 0x3c
+ 375 0072 19       		.uleb128 0x19
+ 376 0073 6E       		.uleb128 0x6e
+ 377 0074 0E       		.uleb128 0xe
+ 378 0075 03       		.uleb128 0x3
+ 379 0076 0E       		.uleb128 0xe
+ 380 0077 3A       		.uleb128 0x3a
+ 381 0078 0B       		.uleb128 0xb
+ 382 0079 3B       		.uleb128 0x3b
+ 383 007a 0B       		.uleb128 0xb
+ 384 007b 00       		.byte	0
+ 385 007c 00       		.byte	0
+ 386 007d 00       		.byte	0
+ 387              		.section	.debug_aranges,"",%progbits
+ 388 0000 1C000000 		.4byte	0x1c
+ 389 0004 0200     		.2byte	0x2
+ 390 0006 00000000 		.4byte	.Ldebug_info0
+ 391 000a 04       		.byte	0x4
+ 392 000b 00       		.byte	0
+ 393 000c 0000     		.2byte	0
+ 394 000e 0000     		.2byte	0
+ 395 0010 00000000 		.4byte	.LFB35
+ 396 0014 34000000 		.4byte	.LFE35-.LFB35
+ 397 0018 00000000 		.4byte	0
+ 398 001c 00000000 		.4byte	0
+ 399              		.section	.debug_ranges,"",%progbits
+ 400              	.Ldebug_ranges0:
+ 401 0000 00000000 		.4byte	.LFB35
+ 402 0004 34000000 		.4byte	.LFE35
+ 403 0008 00000000 		.4byte	0
+ 404 000c 00000000 		.4byte	0
+ 405              		.section	.debug_line,"",%progbits
+ 406              	.Ldebug_line0:
+ 407 0000 9A000000 		.section	.debug_str,"MS",%progbits,1
+ 407      02006D00 
+ 407      00000201 
+ 407      FB0E0D00 
+ 407      01010101 
+ 408              	.LASF6:
+ 409 0000 6C6F6E67 		.ascii	"long long int\000"
+ 409      206C6F6E 
+ 409      6720696E 
+ 409      7400
+ 410              	.LASF22:
+ 411 000e 433A5C55 		.ascii	"C:\\Users\\Administrator\\Desktop\\Temporary Files\\"
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 10
+
+
+ 411      73657273 
+ 411      5C41646D 
+ 411      696E6973 
+ 411      74726174 
+ 412 003d 43797072 		.ascii	"Cypress_Lowpower\\Lowpower\\LowpowerMode\\sleep.cyd"
+ 412      6573735F 
+ 412      4C6F7770 
+ 412      6F776572 
+ 412      5C4C6F77 
+ 413 006d 736E00   		.ascii	"sn\000"
+ 414              	.LASF8:
+ 415 0070 756E7369 		.ascii	"unsigned int\000"
+ 415      676E6564 
+ 415      20696E74 
+ 415      00
+ 416              	.LASF21:
+ 417 007d 6D61696E 		.ascii	"main.c\000"
+ 417      2E6300
+ 418              	.LASF23:
+ 419 0084 6D61696E 		.ascii	"main\000"
+ 419      00
+ 420              	.LASF17:
+ 421 0089 53575F53 		.ascii	"SW_Sleep\000"
+ 421      6C656570 
+ 421      00
+ 422              	.LASF15:
+ 423 0092 43794465 		.ascii	"CyDelay\000"
+ 423      6C617900 
+ 424              	.LASF5:
+ 425 009a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 425      20756E73 
+ 425      69676E65 
+ 425      6420696E 
+ 425      7400
+ 426              	.LASF7:
+ 427 00ac 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 427      206C6F6E 
+ 427      6720756E 
+ 427      7369676E 
+ 427      65642069 
+ 428              	.LASF9:
+ 429 00c3 666C6F61 		.ascii	"float\000"
+ 429      7400
+ 430              	.LASF1:
+ 431 00c9 756E7369 		.ascii	"unsigned char\000"
+ 431      676E6564 
+ 431      20636861 
+ 431      7200
+ 432              	.LASF11:
+ 433 00d7 63686172 		.ascii	"char\000"
+ 433      00
+ 434              	.LASF14:
+ 435 00dc 4C45445F 		.ascii	"LED_Status_Write\000"
+ 435      53746174 
+ 435      75735F57 
+ 435      72697465 
+ 435      00
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 11
+
+
+ 436              	.LASF4:
+ 437 00ed 6C6F6E67 		.ascii	"long int\000"
+ 437      20696E74 
+ 437      00
+ 438              	.LASF18:
+ 439 00f6 4C45445F 		.ascii	"LED_Status_Sleep\000"
+ 439      53746174 
+ 439      75735F53 
+ 439      6C656570 
+ 439      00
+ 440              	.LASF10:
+ 441 0107 646F7562 		.ascii	"double\000"
+ 441      6C6500
+ 442              	.LASF16:
+ 443 010e 6973725F 		.ascii	"isr_Sw_Start\000"
+ 443      53775F53 
+ 443      74617274 
+ 443      00
+ 444              	.LASF20:
+ 445 011b 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 445      43313120 
+ 445      352E342E 
+ 445      31203230 
+ 445      31363036 
+ 446 014e 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 446      20726576 
+ 446      6973696F 
+ 446      6E203233 
+ 446      37373135 
+ 447 0181 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 447      66756E63 
+ 447      74696F6E 
+ 447      2D736563 
+ 447      74696F6E 
+ 448              	.LASF3:
+ 449 01a9 73686F72 		.ascii	"short unsigned int\000"
+ 449      7420756E 
+ 449      7369676E 
+ 449      65642069 
+ 449      6E7400
+ 450              	.LASF0:
+ 451 01bc 7369676E 		.ascii	"signed char\000"
+ 451      65642063 
+ 451      68617200 
+ 452              	.LASF19:
+ 453 01c8 43795379 		.ascii	"CySysPmSleep\000"
+ 453      73506D53 
+ 453      6C656570 
+ 453      00
+ 454              	.LASF13:
+ 455 01d5 6C6F6E67 		.ascii	"long double\000"
+ 455      20646F75 
+ 455      626C6500 
+ 456              	.LASF2:
+ 457 01e1 73686F72 		.ascii	"short int\000"
+ 457      7420696E 
+ 457      7400
+ARM GAS  C:\Users\ADMINI~1\AppData\Local\Temp\ccrDHtWl.s 			page 12
+
+
+ 458              	.LASF12:
+ 459 01eb 73697A65 		.ascii	"sizetype\000"
+ 459      74797065 
+ 459      00
+ 460              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

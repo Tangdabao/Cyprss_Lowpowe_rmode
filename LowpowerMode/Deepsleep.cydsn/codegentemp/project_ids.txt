@@ -1,0 +1,8 @@
+C:\Users\Administrator\Desktop\Temporary Files\Cypress_Lowpower\Lowpower\LowpowerMode\sleep.cydsn\sleep.cyprj|6fb0a20f-1c56-4e84-bf96-fdf5793d1a0f
+D:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|a90a2c25-3f41-480a-bcdc-5ab78960ebee
+C:\Users\Administrator\Documents\PSoC Creator\4.1\Downloads ( 4.1).cylib\Downloads ( 4.1).cyprj|f6483b42-1e4d-4f6a-9abd-e44b9a2e42b9
+D:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|80ff5bd1-b95f-4b29-88c0-f8767816cdd3
+D:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ae0cc0df-816e-4b9c-975d-58560c74ed52
+D:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|23edde69-b8c6-41f0-adaa-6725c35382ef
+C:\Users\Administrator\Desktop\Temporary Files\Cypress_Lowpower\Lowpower\LowpowerMode\Hibernate.cydsn\Hibernate.cyprj|c4d4b7d2-e268-4236-a8d2-3ab5d7c44f9e
+C:\Users\Administrator\Desktop\Temporary Files\Cypress_Lowpower\Lowpower\LowpowerMode\Deepsleep.cydsn\Deepsleep.cyprj|02ca72d8-9367-400c-81e6-6b2343b50fc8

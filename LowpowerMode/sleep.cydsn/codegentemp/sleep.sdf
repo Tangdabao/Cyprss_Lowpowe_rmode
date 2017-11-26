@@ -1,0 +1,22 @@
+(DELAYFILE
+ (SDFVERSION "IEEE 1497 4.0")
+ (DATE "2017-11-26T07:26:13Z")
+ (DESIGN "sleep")
+ (VENDOR "Cypress Semiconductor")
+ (PROGRAM "PSoC Creator")
+ (VERSION " 4.1")
+ (DIVIDER .)
+ (TIMESCALE 1 ns)
+ (CELL
+  (CELLTYPE "sleep")
+  (INSTANCE *)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT ClockBlock.hfclk isr_Sw.clock (0.000:0.000:0.000))
+    (INTERCONNECT SW.interrupt isr_Sw.interrupt (1.000:1.000:1.000))
+    (INTERCONNECT SW\(0\)_PAD SW\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT LED_Status\(0\)_PAD LED_Status\(0\).pad_in (0.000:0.000:0.000))
+   )
+  )
+ )
+)
